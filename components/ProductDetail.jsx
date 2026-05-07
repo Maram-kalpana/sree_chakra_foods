@@ -141,7 +141,7 @@
 //           </div>
 
 //           {/* PRICE */}
-//           <div className="text-3xl font-bold text-green-700">₹{price}</div>
+//           <div className="text-3xl font-bold text-green-700">£{price}</div>
 
 //           {/* VARIANTS */}
 //           {variations.length > 0 && (
@@ -395,7 +395,7 @@ export default function ProductDetail({ product, onBack }) {
         {/* RIGHT SIDE */}
         <div className="space-y-6">
           <h1 className="text-2xl font-bold">{product.name}</h1>
-          <div className="text-3xl font-bold text-green-700">₹{price}</div>
+          <div className="text-3xl font-bold text-green-700">£{price}</div>
           <p className="text-gray-700 text-sm">{product.description}</p>
         </div>
       </div>
@@ -423,7 +423,7 @@ export default function ProductDetail({ product, onBack }) {
               </h3>
 
               <div className="text-green-700 font-semibold mt-1">
-                ₹{item.price}
+                £{item.price}
               </div>
             </div>
           ))}

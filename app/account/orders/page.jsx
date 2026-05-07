@@ -136,7 +136,7 @@
 
 //               {/* PRICE + VIEW */}
 //               <div className="text-right">
-//                 <p className="font-semibold">₹{order.total_amount}</p>
+//                 <p className="font-semibold">£{order.total_amount}</p>
 //                 <button
 //                   onClick={() =>
 //                     router.push(`/account/orders/details?id=${order.id}`)
@@ -269,7 +269,7 @@ export default function OrdersPage() {
             firstItem?.product?.images?.find((img) => img.is_primary)
               ?.image_url ||
             firstItem?.product?.images?.[0]?.image_url ||
-            "/logo.webp";
+            "/sreelogo.jpeg";
 
           return (
             <div
@@ -301,7 +301,7 @@ export default function OrdersPage() {
 
               {/* PRICE */}
               <div className="text-right">
-                <p className="font-semibold">₹{order.total_amount}</p>
+                <p className="font-semibold">£{order.total_amount}</p>
                 <button
                   onClick={() =>
                     router.push(`/account/orders/details?id=${order.id}`)

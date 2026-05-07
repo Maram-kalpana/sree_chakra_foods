@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="760" viewBox="0 0 520 760">
+  <defs>
+    <linearGradient id="wbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffa726"/>
+      <stop offset="1" stop-color="#ff6f00"/>
+    </linearGradient>
+    <filter id="txtShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="3" dy="5" stdDeviation="1.5" flood-color="#1b4332" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <rect width="520" height="760" fill="url(#wbg)"/>
+  <g opacity="0.16" fill="#fff">
+    <circle cx="90" cy="110" r="48"/>
+    <circle cx="430" cy="200" r="95"/>
+    <circle cx="360" cy="620" r="125"/>
+    <circle cx="100" cy="590" r="68"/>
+  </g>
+  <g opacity="0.12" fill="#fff">
+    <circle cx="250" cy="80" r="3"/>
+    <circle cx="180" cy="300" r="2"/>
+    <circle cx="400" cy="420" r="2.5"/>
+    <circle cx="220" cy="680" r="2"/>
+    <circle cx="60" cy="450" r="2"/>
+    <circle cx="480" cy="560" r="2"/>
+    <circle cx="320" cy="240" r="2"/>
+    <circle cx="140" cy="200" r="2"/>
+  </g>
+  <g transform="rotate(-5 260 380)" filter="url(#txtShadow)">
+    <text x="72" y="340" font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="76" font-weight="900"
+      fill="#ffffff" stroke="#0b5f2a" stroke-width="10" stroke-linejoin="round" paint-order="stroke fill">
+      Weekly
+    </text>
+    <text x="72" y="430" font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="80" font-weight="900"
+      fill="#ffffff" stroke="#0b5f2a" stroke-width="10" stroke-linejoin="round" paint-order="stroke fill">
+      Offers
+    </text>
+  </g>
+</svg>

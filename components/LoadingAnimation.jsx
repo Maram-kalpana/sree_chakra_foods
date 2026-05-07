@@ -2,20 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import api from "@/lib/api";
 
 const LoadingAnimation = ({ onComplete }) => {
   const [currentItem, setCurrentItem] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [logoVisible, setLogoVisible] = useState(false);
-  const [logo, setLogo] = useState("/logo.webp"); // fallback
+  const logo = "/sreelogo.jpeg";
 
   const herbalItems = [
-    { emoji: "🌿", name: "Herbs" },
-    { emoji: "🌱", name: "Natural" },
-    { emoji: "🍃", name: "Ayurvedic" },
-    { emoji: "🧴", name: "Herbal Care" },
-    { emoji: "🌼", name: "Wellness" },
+    { emoji: "❄️", name: "Fresh & Frozen" },
+    { emoji: "🧺", name: "Cupboards" },
+    { emoji: "🌶️", name: "Ingredients" },
+    { emoji: "🧴", name: "Health & Beauty" },
+    { emoji: "🪔", name: "Pooja" },
   ];
 
   useEffect(() => {
@@ -43,23 +42,6 @@ const LoadingAnimation = ({ onComplete }) => {
     };
   }, [onComplete, herbalItems.length]);
 
-  useEffect(() => {
-    const fetchLogo = async () => {
-      try {
-        const res = await api.get("/ecom/app-logo-settings");
-        const result = res.data;
-
-        if (result.status && result.data?.app_logo_url) {
-          setLogo(result.data.logo);
-        }
-      } catch (error) {
-        console.error("Logo fetch failed", error);
-      }
-    };
-
-    fetchLogo();
-  }, []);
-
   if (!isVisible) {
     return (
       <div className="fixed inset-0 bg-white opacity-0 transition-opacity duration-500 z-50" />
@@ -77,7 +59,7 @@ const LoadingAnimation = ({ onComplete }) => {
         >
           <Image
             src={logo}
-            alt="Herbal Logo"
+            alt="Sree Chakra Foods"
             width={140}
             height={140}
             priority
@@ -115,8 +97,8 @@ const LoadingAnimation = ({ onComplete }) => {
         {/* Loading Text */}
         <div className="text-gray-700 mt-4 text-base">
           {currentItem === herbalItems.length - 1
-            ? "Welcome to Natural Wellness"
-            : "Preparing herbal goodness..."}
+            ? "Welcome to Sree Chakra Foods"
+            : "Preparing your store..."}
         </div>
       </div>
     </div>

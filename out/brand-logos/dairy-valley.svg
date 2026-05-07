@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="160" viewBox="0 0 420 160">
+  <rect width="420" height="160" fill="none"/>
+  <path d="M140 118c0-40 28-72 70-72s70 32 70 72c-24 8-46 12-70 12s-46-4-70-12Z" fill="#1F4B99"/>
+  <text x="210" y="92" text-anchor="middle"
+        font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial"
+        font-weight="900" font-size="40" fill="#FFFFFF">
+    Dairy
+  </text>
+  <text x="210" y="120" text-anchor="middle"
+        font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial"
+        font-weight="800" font-size="34" fill="#FFFFFF">
+    Valley
+  </text>
+</svg>

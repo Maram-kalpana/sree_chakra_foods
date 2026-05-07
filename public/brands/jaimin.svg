@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="140" viewBox="0 0 340 140">
+  <rect width="340" height="140" fill="none"/>
+  <g transform="translate(22 18)">
+    <rect x="0" y="0" width="296" height="104" rx="18" fill="none" stroke="#E5E7EB" stroke-width="4"/>
+    <text x="148" y="66" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="900" font-size="56" fill="#1D4ED8">
+      Jaimin
+    </text>
+    <path d="M52 82h192" stroke="#DC2626" stroke-width="4" opacity="0.7"/>
+  </g>
+</svg>

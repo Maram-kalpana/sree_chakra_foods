@@ -49,7 +49,7 @@
 
 import { Suspense } from "react";
 import { useRouter } from "next/navigation";
-import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/contexts/AuthContext";
 import { WishlistProvider } from "@/contexts/WishlistContext";
@@ -76,7 +76,7 @@ export default function LayoutClient({ children }) {
     <WishlistProvider>
       {/* HEADER */}
       <Suspense fallback={<div />}>
-        <Header
+        <Navbar
           onCategorySelect={handleCategorySelect}
           onSearch={handleSearch}
           onProductClick={handleProductClick}

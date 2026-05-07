@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="140" viewBox="0 0 340 140">
+  <rect width="340" height="140" fill="none"/>
+  <g transform="translate(34 18)">
+    <rect x="0" y="0" width="272" height="104" rx="18" fill="none" stroke="#E5E7EB" stroke-width="4"/>
+    <g transform="translate(136 52)">
+      <polygon points="0,-38 44,0 0,38 -44,0" fill="#DC2626"/>
+      <text x="0" y="14" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="900" font-size="46" fill="#FFFFFF" letter-spacing="1">
+        MDH
+      </text>
+    </g>
+  </g>
+</svg>

@@ -96,9 +96,9 @@ export default function OrderDetailsPage() {
                   <tr key={item.id} className="border-b">
                     <td className="py-3 font-medium">{item.product?.name}</td>
                     <td className="text-center">{item.quantity}</td>
-                    <td className="text-center">₹{item.price}</td>
+                    <td className="text-center">£{item.price}</td>
                     <td className="text-right font-medium">
-                      ₹{item.quantity * item.price}
+                      £{item.quantity * item.price}
                     </td>
                   </tr>
                 ))}
@@ -109,19 +109,19 @@ export default function OrderDetailsPage() {
             <div className="mt-6 space-y-2 text-sm">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>₹{order.subtotal}</span>
+                <span>£{order.subtotal}</span>
               </div>
 
               {order.discount_amount > 0 && (
                 <div className="flex justify-between text-green-600">
                   <span>Discount</span>
-                  <span>- ₹{order.discount_amount}</span>
+                  <span>- £{order.discount_amount}</span>
                 </div>
               )}
 
               <div className="flex justify-between font-semibold text-base border-t pt-2">
                 <span>Total</span>
-                <span>₹{order.total_amount}</span>
+                <span>£{order.total_amount}</span>
               </div>
             </div>
           </div>

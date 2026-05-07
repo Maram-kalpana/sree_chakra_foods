@@ -1,4 +1,4 @@
-// File: D:\ecom\herbal_Ecom_New_Design\app\product\details\page.jsx
+// File: C:\Users\Dell\sri_devi_herbals_ecom\app\product\details\page.jsx
 import * as entry from '../../../../../app/product/details/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

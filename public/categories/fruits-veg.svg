@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="280" viewBox="0 0 420 280">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f7fafc"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9a66a"/>
+      <stop offset="1" stop-color="#b97a3d"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="280" fill="url(#bg)"/>
+  <!-- Basket -->
+  <path d="M95 130h230l-18 110H113z" fill="url(#wood)" stroke="#9a6b36" stroke-width="6" />
+  <path d="M100 140h220" stroke="#8b5e2c" stroke-width="6" opacity="0.7"/>
+  <path d="M105 162h210" stroke="#8b5e2c" stroke-width="6" opacity="0.55"/>
+  <path d="M110 184h200" stroke="#8b5e2c" stroke-width="6" opacity="0.45"/>
+  <path d="M115 206h190" stroke="#8b5e2c" stroke-width="6" opacity="0.35"/>
+  <path d="M120 228h180" stroke="#8b5e2c" stroke-width="6" opacity="0.28"/>
+  <!-- Handle -->
+  <path d="M125 132c10-55 55-90 85-90h0c30 0 75 35 85 90" fill="none" stroke="#9a6b36" stroke-width="10" stroke-linecap="round"/>
+  <!-- Produce -->
+  <circle cx="150" cy="120" r="22" fill="#ff4d4d" stroke="#c23b3b" stroke-width="4"/>
+  <circle cx="185" cy="108" r="18" fill="#ffd54f" stroke="#e0b93f" stroke-width="4"/>
+  <circle cx="225" cy="118" r="20" fill="#66bb6a" stroke="#459b49" stroke-width="4"/>
+  <circle cx="260" cy="108" r="17" fill="#ff7043" stroke="#d85c34" stroke-width="4"/>
+  <path d="M220 84c12-16 32-22 54-14" fill="none" stroke="#43a047" stroke-width="10" stroke-linecap="round"/>
+</svg>
+

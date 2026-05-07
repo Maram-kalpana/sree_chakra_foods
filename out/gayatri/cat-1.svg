@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" rx="24" fill="#e8f6ee"/>
+  <circle cx="90" cy="74" r="34" fill="#0f7a3a" opacity="0.15"/>
+  <path d="M56 120c18-20 50-20 68 0" fill="none" stroke="#0f7a3a" stroke-width="10" stroke-linecap="round"/>
+  <text x="90" y="164" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#0b5f2a">Category</text>
+</svg>

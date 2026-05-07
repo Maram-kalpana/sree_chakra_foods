@@ -224,15 +224,15 @@ export default function ProductDetailNew({ product, onBack }) {
             {/* Price */}
             <div className="flex items-baseline gap-3">
               <span className="text-4xl font-bold text-red-900">
-                ₹{price.toLocaleString('en-IN')}
+                £{price.toLocaleString('en-IN')}
               </span>
               {originalPrice > price && (
                 <>
                   <span className="text-2xl text-gray-400 line-through">
-                    ₹{originalPrice.toLocaleString('en-IN')}
+                    £{originalPrice.toLocaleString('en-IN')}
                   </span>
                   <span className="text-green-600 font-semibold">
-                    Save ₹{(originalPrice - price).toLocaleString('en-IN')}
+                    Save £{(originalPrice - price).toLocaleString('en-IN')}
                   </span>
                 </>
               )}
@@ -330,7 +330,7 @@ export default function ProductDetailNew({ product, onBack }) {
               <div className="text-center">
                 <Truck className="w-8 h-8 mx-auto mb-2 text-red-900" />
                 <p className="text-xs font-medium text-gray-700">Free Shipping</p>
-                <p className="text-xs text-gray-500">On orders over ₹10,000</p>
+                <p className="text-xs text-gray-500">On orders above £999</p>
               </div>
               <div className="text-center">
                 <Shield className="w-8 h-8 mx-auto mb-2 text-red-900" />

@@ -16,9 +16,24 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import LoadingAnimation from "@/components/LoadingAnimation";
-import AdBanner from "@/components/AdBanner";
+import HeroCarousel from "@/components/HeroCarousel";
+import CategoryGrid from "@/components/CategoryGrid";
+import ProductSection from "@/components/ProductSection";
+import Banner from "@/components/Banner";
 import ProductCard from "@/components/ProductCard";
+// import BrandStrip from "@/components/BrandStrip";
+import HomeSectionCarousel from "@/components/HomeSectionCarousel";
+import FreshFruitsVideoCarousel from "@/components/FreshFruitsVideoCarousel";
+import FeaturedProductCarousel from "@/components/FeaturedProductCarousel";
+import HomeProductSpotlight from "@/components/HomeProductSpotlight";
 import api from "@/lib/api";
+import {
+  buildHaldiramDummyProducts,
+  buildProduceIndiaItems,
+  buildIngredientsItems,
+  buildWeeklyOffersFallbackProducts,
+  buildSmartCartFallbackProducts,
+} from "@/lib/homeSectionsDummy";
 
 const DEAL_SECTION_SLUGS = ["flash-sales", "trending"];
 const CATEGORY_ICONS = [Flower2, Scissors, Sparkles, Crown, Gem, BadgeCheck];
@@ -42,7 +57,7 @@ const TRUST_POINTS = [
   },
   {
     title: "Free Shipping",
-    text: "On orders above \u20B9999",
+    text: "On orders above £999",
     icon: Truck,
   },
   {
@@ -115,172 +130,198 @@ export default function Home() {
 
   const topCategories = useMemo(() => menuCategories.slice(0, 6), [menuCategories]);
 
+  const weeklyOffersProducts = useMemo(() => {
+    return displaySections?.[0]?.products || [];
+  }, [displaySections]);
+
+  const smartCartProducts = useMemo(() => {
+    return displaySections?.[1]?.products || [];
+  }, [displaySections]);
+
+  const haldiramsProducts = useMemo(() => buildHaldiramDummyProducts(), []);
+  const produceIndiaItems = useMemo(() => buildProduceIndiaItems(), []);
+  const ingredientsItems = useMemo(() => buildIngredientsItems(), []);
+  const weeklyOffersFallback = useMemo(() => buildWeeklyOffersFallbackProducts(), []);
+  const smartCartFallback = useMemo(() => buildSmartCartFallbackProducts(), []);
+
   if (loading) {
     return <LoadingAnimation onComplete={() => {}} />;
   }
 
   return (
-    <div className="min-h-screen bg-[#f5f1eb] text-[#2c1b20]">
-      <main className="mx-auto max-w-[1320px] px-3 sm:px-4 md:px-6 lg:px-8 pb-12 sm:pb-16">
-        <AdBanner />
+    <div className="min-h-screen bg-white text-gray-900">
+      {/* Full width hero banner */}
+      <section className="w-full border-b border-gray-200 bg-white">
+        <img
+          src="/Mango_Desktop.png"
+          alt="Fresh Mangoes"
+          className="w-full h-auto object-cover"
+          loading="lazy"
+        />
+      </section>
 
-        <motion.section
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.22 }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          className="mb-12 sm:mb-16"
-        >
-          <div className="text-center mb-6 sm:mb-8">
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#2f1620]">
-              Shop by Category
-            </h2>
-            <p className="text-[#7b6860] mt-2 text-xs sm:text-sm md:text-base">
-              Explore our curated collections
-            </p>
+      {/* 3-image banner (keep this) */}
+      <HeroCarousel />
+
+      <main className="mx-auto max-w-[1320px] px-4 pb-12 pt-2 sm:px-5 md:px-8 lg:px-10 sm:pb-16">
+        <CategoryGrid
+          title="Shop by Categories"
+          categories={topCategories}
+          onSelect={(c) =>
+            router.push(c?.slug ? `/products?category=${encodeURIComponent(c.slug)}` : "/products")
+          }
+          onViewAll={() => router.push("/products")}
+        />
+
+        <HomeSectionCarousel
+          title="Weekly Offers"
+          viewAllText="View all"
+          leftPromoImage="/gayatri/weekly-offers.svg"
+          products={weeklyOffersProducts}
+          fallbackProducts={weeklyOffersFallback}
+          onViewAll={() => router.push("/products")}
+          spacedCards
+          carouselNavVariant="weekly"
+        />
+
+        {/* <BrandStrip onViewAll={() => router.push("/products")} /> */}
+
+        <HomeSectionCarousel
+          title="Smart Cart Savings"
+          viewAllText="View all"
+          products={smartCartProducts}
+          fallbackProducts={smartCartFallback}
+          onViewAll={() => router.push("/products")}
+          showLeftBanner={false}
+          spacedCards
+          carouselNavVariant="inline"
+        />
+
+        <FreshFruitsVideoCarousel />
+
+        <HomeSectionCarousel
+          title="Haldirams Offers"
+          viewAllText="View all"
+          products={haldiramsProducts}
+          onViewAll={() => router.push("/products")}
+          showLeftBanner={false}
+          spacedCards
+          carouselNavVariant="inline"
+        />
+
+        <FeaturedProductCarousel
+          title="Produce Of India"
+          items={produceIndiaItems}
+          onViewAll={() => router.push("/products")}
+          stripLayout
+        />
+
+        <FeaturedProductCarousel
+          title="Ingredients To Inspire"
+          items={ingredientsItems}
+          onViewAll={() => router.push("/products")}
+          stripLayout
+        />
+
+        {/*
+          Spotlight section (disabled for now).
+        */}
+        {false && <HomeProductSpotlight />}
+
+        {displaySections.length > 0 ? (
+          <div className="mt-10 sm:mt-12">
+            <Banner src="/gayatri/banner-2.svg" alt="Promotional banner" />
           </div>
+        ) : null}
 
-          {!topCategories.length ? (
-            <div className="text-center py-8 text-[#857169] text-sm">
-              Categories are loading soon.
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4">
-              {topCategories.map((category, index) => {
-                const Icon = CATEGORY_ICONS[index % CATEGORY_ICONS.length];
-                return (
-                  <motion.button
-                    key={category.id}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: index * 0.06 }}
-                    whileHover={{ y: -4 }}
-                    onClick={() =>
-                      router.push(`/products?category=${encodeURIComponent(category.slug)}`)
-                    }
-                    className="bg-white/75 backdrop-blur border border-[#e8ddd2] rounded-lg sm:rounded-xl px-2 sm:px-3 py-4 sm:py-5 shadow-[0_8px_20px_-16px_rgba(61,21,34,0.7)] hover:border-[#d4c0ac] transition-colors"
-                  >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 mx-auto text-[#8b1d3d]" />
-                    <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-[#3a232a] line-clamp-1">
-                      {category.name}
-                    </p>
-                    <p className="text-[10px] sm:text-xs mt-1 text-[#8f7d73]">4+ styles</p>
-                  </motion.button>
-                );
-              })}
-            </div>
-          )}
-        </motion.section>
+        {/*
+          Extra dynamic home sections (disabled for now).
+          This block also showed: "No section products available right now."
+        */}
+        {false && (
+          <section className="mt-10 sm:mt-12">
+            {!displaySections.length ? (
+              <div className="rounded-md border border-gray-200 bg-gray-50 px-4 py-10 text-center text-sm text-gray-600">
+                No section products available right now.
+              </div>
+            ) : (
+              <div className="space-y-10 sm:space-y-12">
+                {displaySections.slice(2).map((section, sectionIndex) => {
+                  const normalizedSlug = (section.slug || "").toLowerCase();
+                  const sectionMeta = SECTION_META[normalizedSlug];
 
-        {!displaySections.length ? (
-          <div className="py-10 text-center text-[#7d6f69] text-sm">
-            No section products available right now.
-          </div>
-        ) : (
-          <div className="space-y-12 sm:space-y-16">
-            {displaySections.map((section, sectionIndex) => {
-              const normalizedSlug = (section.slug || "").toLowerCase();
-              const sectionMeta = SECTION_META[normalizedSlug];
-
-              return (
-                <React.Fragment key={section.id}>
-                  <motion.section
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.55, ease: "easeOut" }}
-                  >
-                    <div className="flex items-end justify-between mb-4 sm:mb-6 md:mb-8">
-                      <div>
-                        <p className="text-[10px] sm:text-xs tracking-[0.24em] uppercase text-[#a5917b] mb-1 sm:mb-2">
-                          {sectionMeta?.chip || "Signature Edit"}
-                        </p>
-                        <h2 className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#2d161f]">
-                          {section.name}
-                        </h2>
-                        <p className="text-[#7f6b63] text-xs sm:text-sm mt-1 sm:mt-2">
-                          {sectionMeta?.subtitle || "Handpicked products for you"}
-                        </p>
-                      </div>
-
-                      <button
-                        onClick={() => router.push("/products")}
-                        className="hidden md:flex items-center gap-1.5 text-[#8b1d3d] text-sm font-medium hover:underline"
+                  return (
+                    <React.Fragment key={section.id}>
+                      <motion.section
+                        initial={{ opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.45, ease: "easeOut" }}
                       >
-                        View All
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
-                    </div>
+                        <ProductSection
+                          title={sectionMeta?.chip || section.name || "Weekly Offers"}
+                          products={section.products}
+                        />
+                      </motion.section>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-                      {section.products.map((product, productIndex) => (
-                        <motion.div
-                          key={`${section.id}-${product.id}`}
-                          initial={{ opacity: 0, y: 22 }}
+                      {sectionIndex === 0 && (
+                        <motion.section
+                          initial={{ opacity: 0, y: 14 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 0.4,
-                            delay: productIndex * 0.05,
-                            ease: "easeOut",
-                          }}
+                          viewport={{ once: true, amount: 0.35 }}
+                          transition={{ duration: 0.4, ease: "easeOut" }}
+                          className="rounded-md border border-gray-200 bg-white px-5 sm:px-6 py-6 sm:py-8 shadow-sm"
                         >
-                          <ProductCard product={product} variant="showcase" />
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.section>
-
-                  {sectionIndex === 0 && (
-                    <motion.section
-                      initial={{ opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.4 }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                      className="rounded-xl sm:rounded-2xl px-4 sm:px-6 py-8 sm:py-12 md:py-16 text-center text-white border border-[#9f4658] bg-[linear-gradient(130deg,#6f1d33_0%,#8a2740_45%,#b14561_100%)] shadow-[0_20px_40px_-24px_rgba(93,28,47,0.8)]"
-                    >
-                      <p className="uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#f5ce8b] text-[10px] sm:text-xs mb-3 sm:mb-4">
-                        Limited Time Offer
-                      </p>
-                      <h3 className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-5xl mb-2 sm:mb-3 px-2">
-                        Flat 30% Off on Bridal Collection
-                      </h3>
-                      <p className="text-[#f7d9dc] text-xs sm:text-sm md:text-base mb-5 sm:mb-7 px-2">
-                        Celebrate your special day with handpicked bridal sarees.
-                        Use code BRIDE30 at checkout.
-                      </p>
-                      <button
-                        onClick={() => router.push("/products")}
-                        className="bg-[#edbe5e] hover:bg-[#f4ca73] text-[#4a1b2a] px-5 sm:px-7 py-2.5 sm:py-3 rounded-sm text-xs sm:text-sm font-semibold transition-colors"
-                      >
-                        Shop Bridal Collection
-                      </button>
-                    </motion.section>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div>
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div>
+                              <p className="text-xs text-gray-500">In season now</p>
+                              <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-gray-900 mt-1">
+                                Weekly offers refreshed every Monday
+                              </h3>
+                              <p className="text-sm text-gray-600 mt-1">
+                                Grab your favourites before they sell out.
+                              </p>
+                            </div>
+                            <button
+                              onClick={() => router.push("/products")}
+                              className="inline-flex items-center justify-center rounded-md bg-[#99ca20] px-4 py-2.5 text-sm font-semibold text-black hover:bg-[#88b71c] transition-colors"
+                            >
+                              Shop offers
+                            </button>
+                          </div>
+                        </motion.section>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+            )}
+          </section>
         )}
 
         <motion.section
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="mt-10 sm:mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4"
         >
           {TRUST_POINTS.map((point) => {
             const Icon = point.icon;
             return (
               <div
                 key={point.title}
-                className="text-center px-2 sm:px-3 py-4 sm:py-6 bg-white/70 rounded-lg sm:rounded-xl border border-[#e8ddd2]"
+                className="rounded-md border border-gray-200 bg-white px-3 sm:px-4 py-4 sm:py-5 shadow-sm"
               >
-                <Icon className="w-4 h-4 sm:w-5 sm:h-5 mx-auto text-[#8b1d3d]" />
-                <p className="text-xs sm:text-sm mt-2 sm:mt-3 font-semibold text-[#321a23]">{point.title}</p>
-                <p className="text-[10px] sm:text-xs mt-1 text-[#8a756d]">{point.text}</p>
+                <div className="flex items-start gap-3">
+                  <div className="h-9 w-9 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-4 h-4 text-gray-900" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900">{point.title}</p>
+                    <p className="text-xs text-gray-600 mt-0.5">{point.text}</p>
+                  </div>
+                </div>
               </div>
             );
           })}

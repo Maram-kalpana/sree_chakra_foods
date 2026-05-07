@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="160" viewBox="0 0 420 160">
+  <rect width="420" height="160" fill="none"/>
+  <path d="M120 98c20-32 58-52 96-52 38 0 76 20 96 52-22 18-60 28-96 28s-74-10-96-28Z" fill="#1F4B99"/>
+  <text x="210" y="94" text-anchor="middle"
+        font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial"
+        font-weight="900" font-size="44" fill="#FFFFFF" letter-spacing="1">
+    DAAWAT
+  </text>
+</svg>

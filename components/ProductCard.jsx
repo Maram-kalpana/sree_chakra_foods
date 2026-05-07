@@ -33,6 +33,7 @@ export default function ProductCard({ product, variant = "default" }) {
   const primaryImage =
     product.images?.find((img) => img.is_primary)?.image_url ||
     product.images?.[0]?.image_url;
+  const fallbackImg = "/Fudco.avif";
 
   const price =
     toNumber(product.min_variant_price) ??
@@ -130,21 +131,21 @@ export default function ProductCard({ product, variant = "default" }) {
     setShowVideo(true);
   };
 
-  if (!product.name || !primaryImage) {
+  if (!product.name) {
     return null;
   }
 
   const cardClasses = isShowcase
-    ? "relative bg-white/95 rounded-xl border border-[#e8ddd2] overflow-hidden group cursor-pointer shadow-[0_14px_30px_-18px_rgba(62,20,34,0.5)] hover:shadow-[0_20px_42px_-20px_rgba(62,20,34,0.56)] transition-all duration-300"
-    : "relative bg-white rounded-lg border border-gray-200 overflow-hidden group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300";
+    ? "relative bg-white/95 rounded-2xl border border-[#e8ddd2] overflow-hidden group cursor-pointer shadow-[0_14px_30px_-18px_rgba(62,20,34,0.5)] hover:shadow-[0_20px_42px_-20px_rgba(62,20,34,0.56)] transition-all duration-300"
+    : "relative bg-white rounded-[14px] border border-gray-200 overflow-hidden group cursor-pointer shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.01]";
 
   const imageWrapperClasses = isShowcase
     ? "relative aspect-[4/5] overflow-hidden bg-[#f6ede1]"
-    : "relative aspect-square overflow-hidden bg-gray-50";
+    : "relative aspect-[4/3] overflow-hidden bg-white";
 
   const addToCartClasses = isShowcase
     ? "w-full bg-[#8b1d3d] text-white text-xs sm:text-sm font-semibold py-2 sm:py-2.5 rounded-md hover:bg-[#791733] transition-colors flex items-center justify-center gap-2 mt-2 sm:mt-3"
-    : "w-full bg-red-900 text-white text-xs sm:text-sm font-medium py-2 sm:py-2.5 rounded-lg hover:bg-red-800 transition-colors flex items-center justify-center gap-2 mt-2 sm:mt-3";
+    : "w-full bg-[#99ca20] text-black text-sm font-semibold py-2.5 rounded-md hover:bg-[#88b71c] transition-colors flex items-center justify-center gap-2 mt-3";
 
   return (
     <>
@@ -155,22 +156,21 @@ export default function ProductCard({ product, variant = "default" }) {
         onClick={handleOpenProduct}
       >
         {discountPercent && (
-          <div className="absolute top-2 sm:top-2.5 left-2 sm:left-2.5 z-10 bg-[#c53945] text-white text-[10px] sm:text-[11px] font-semibold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-sm tracking-wide">
-            -{discountPercent}%
+          <div className="absolute top-0 left-0 z-10 bg-[#ffeb3b] text-black text-[11px] font-bold px-2 py-1">
+            {discountPercent}% off
           </div>
         )}
 
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={handleWishlist}
-          className="absolute top-2 sm:top-2.5 right-2 sm:right-2.5 z-10 bg-white/95 p-1.5 sm:p-2 rounded-full shadow-md hover:shadow-lg transition-all"
+          className="absolute top-2 right-2 z-10 bg-white/95 p-2 rounded-full shadow-sm hover:shadow-md transition-all"
+          aria-label="Wishlist"
         >
           <Heart
-            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-colors ${
-              inWishlist
-                ? "fill-red-500 text-red-500"
-                : "text-gray-600 hover:text-red-500"
+            className={`w-4 h-4 transition-colors ${
+              inWishlist ? "fill-red-500 text-red-500" : "text-gray-600 hover:text-red-500"
             }`}
           />
         </motion.button>
@@ -179,10 +179,14 @@ export default function ProductCard({ product, variant = "default" }) {
           <motion.img
             whileHover={{ scale: 1.07 }}
             transition={{ duration: 0.35 }}
-            src={primaryImage}
+            src={primaryImage || fallbackImg}
             alt={product.name}
             className="w-full h-full object-cover"
             loading="lazy"
+            onError={(e) => {
+              if (e?.currentTarget?.src?.includes(fallbackImg)) return;
+              e.currentTarget.src = fallbackImg;
+            }}
           />
 
           {videoUrl && (
@@ -195,14 +199,14 @@ export default function ProductCard({ product, variant = "default" }) {
           )}
         </div>
 
-        <div className={`${isShowcase ? "p-3.5 space-y-2.5" : "p-2.5 sm:p-3 space-y-1.5 sm:space-y-2"}`}>
+        <div className={`${isShowcase ? "p-3.5 space-y-2.5" : "px-3 pb-3"}`}>
           {category && (
-            <p className="text-[9px] sm:text-[10px] text-[#8e7e71] uppercase tracking-[0.16em] font-semibold">
+            <p className="text-[10px] text-gray-500 uppercase tracking-wide font-semibold mt-2">
               {category}
             </p>
           )}
 
-          <h3 className="text-xs sm:text-sm md:text-[15px] font-medium text-gray-900 line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem]">
+          <h3 className="mt-2 text-sm font-semibold text-gray-900 line-clamp-2 min-h-[42px]">
             {product.name}
           </h3>
 
@@ -218,16 +222,14 @@ export default function ProductCard({ product, variant = "default" }) {
             </div>
           )}
 
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <span
-              className={`${isShowcase ? "text-lg sm:text-[1.42rem] text-[#2b1119]" : "text-base sm:text-lg text-gray-900"} font-bold`}
-            >
-              {"\u20B9"}
+          <div className="mt-2 flex items-baseline gap-2">
+            <span className="text-sm font-bold text-gray-900">
+              {"£"}
               {price.toLocaleString("en-IN")}
             </span>
             {originalPrice && originalPrice > price && (
-              <span className="text-xs sm:text-sm text-gray-400 line-through">
-                {"\u20B9"}
+              <span className="text-xs text-gray-400 line-through">
+                {"£"}
                 {originalPrice.toLocaleString("en-IN")}
               </span>
             )}
@@ -240,7 +242,7 @@ export default function ProductCard({ product, variant = "default" }) {
             className={addToCartClasses}
           >
             <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            <span className="text-xs sm:text-sm">Add to Cart</span>
+            <span>Add To Cart</span>
           </motion.button>
         </div>
       </motion.div>

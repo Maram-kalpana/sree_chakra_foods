@@ -50,7 +50,7 @@ export default function WishlistPage() {
             >
               {/* IMAGE */}
               <img
-                src={item.image || "/logo.webp"}
+                src={item.image || "/sreelogo.jpeg"}
                 alt={item.name}
                 className="w-24 h-24 rounded-xl object-cover bg-gray-50"
               />
@@ -61,7 +61,7 @@ export default function WishlistPage() {
                   {item.name}
                 </p>
 
-                <p className="font-semibold text-lg mt-1">₹{item.price}</p>
+                <p className="font-semibold text-lg mt-1">£{item.price}</p>
 
                 {/* ACTIONS */}
                 <div className="flex gap-4 mt-4 text-sm">

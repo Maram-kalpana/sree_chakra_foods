@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({
   const [showCategoryMenu, setShowCategoryMenu] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
-  const [logo, setLogo] = useState<string>("/logo.webp"); 
+  const [logo] = useState<string>("/sreelogo.jpeg");
 
   const { getTotalItems } = useCart();
   const { getWishlistCount } = useWishlist();
@@ -45,24 +45,7 @@ const Header: React.FC<HeaderProps> = ({
     category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  useEffect(() => {
-  const fetchLogo = async () => {
-    try {
-      const res = await fetch(
-        "http://localhost:3000/api/dashboard/logo-settings-open"
-      );
-      const result = await res.json();
-
-      if (result.status && result.data?.logo) {
-        setLogo(result.data.logo);
-      }
-    } catch (error) {
-      console.error("Failed to load logo", error);
-    }
-  };
-
-  fetchLogo();
-}, []);
+// Logo is a local asset for this project.
 
 
   const handleSearch = (e: React.FormEvent) => {

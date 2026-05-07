@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8a00"/>
+      <stop offset="1" stop-color="#ff4d4d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="520" fill="url(#g2)"/>
+  <g fill="#fff">
+    <text x="80" y="180" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Indian Groceries</text>
+    <text x="80" y="240" font-family="Arial, Helvetica, sans-serif" font-size="22" opacity="0.9">Staples " Snacks " Spices " Daily needs</text>
+  </g>
+  <g opacity="0.22" fill="#fff">
+    <rect x="980" y="120" width="320" height="220" rx="24"/>
+    <rect x="920" y="260" width="260" height="180" rx="24"/>
+  </g>
+</svg>

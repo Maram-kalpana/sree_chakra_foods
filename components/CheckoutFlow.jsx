@@ -626,7 +626,7 @@ const CheckoutFlow = ({ isOpen, onClose }) => {
                         <p className="text-sm font-medium line-clamp-1">{item.name}</p>
                         <p className="text-xs text-gray-600">Qty: {item.quantity}</p>
                         <p className="text-sm font-semibold text-red-900">
-                          ₹{item.price * item.quantity}
+                          £{item.price * item.quantity}
                         </p>
                       </div>
                     </div>
@@ -642,7 +642,7 @@ const CheckoutFlow = ({ isOpen, onClose }) => {
                 <div className="border-t mt-4 pt-4 space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Subtotal</span>
-                    <span className="font-medium">₹{getTotalPrice()}</span>
+                    <span className="font-medium">£{getTotalPrice()}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Delivery</span>
@@ -650,7 +650,7 @@ const CheckoutFlow = ({ isOpen, onClose }) => {
                   </div>
                   <div className="flex justify-between text-lg font-bold border-t pt-2">
                     <span>Total</span>
-                    <span className="text-red-900">₹{finalAmount}</span>
+                    <span className="text-red-900">£{finalAmount}</span>
                   </div>
                 </div>
               </div>

@@ -5,13 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   {
-    image: "/banner1.webp",
+    image: "/gayatri/banner-1.svg",
   },
   {
-    image: "/banner1.webp",
+    image: "/gayatri/banner-2.svg",
   },
   {
-    image: "/banner1.webp",
+    image: "/gayatri/banner-1.svg",
   },
 ];
 
@@ -30,19 +30,47 @@ const AdBanner = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[360px] md:h-[500px] lg:h-[620px] overflow-hidden rounded-b-3xl border border-[#e7dccf] shadow-[0_18px_40px_-22px_rgba(61,23,34,0.55)] mb-14">
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={currentSlide.image + currentIndex}
-          initial={{ opacity: 0, scale: 1.03 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          src={currentSlide.image}
-          alt="Collection banner"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </AnimatePresence>
+    <section className="w-full bg-white border-b border-gray-200">
+      <div className="mx-auto max-w-[1320px] px-3 sm:px-4 md:px-6 lg:px-8 py-3">
+        <div className="hidden md:grid grid-cols-3 gap-3">
+          {slides.slice(0, 3).map((s, idx) => (
+            <div
+              key={`${s.image}-${idx}`}
+              className="border border-gray-200 bg-gray-50 overflow-hidden h-[170px] lg:h-[190px]"
+            >
+              <img src={s.image} alt="Banner" className="w-full h-full object-cover" />
+            </div>
+          ))}
+        </div>
+
+        <div className="md:hidden relative overflow-hidden border border-gray-200 bg-gray-50 h-[170px]">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentSlide.image + currentIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35 }}
+              src={currentSlide.image}
+              alt="Banner"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setCurrentIndex(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  idx === currentIndex ? "w-6 bg-[#99ca20]" : "w-1.5 bg-white/80"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

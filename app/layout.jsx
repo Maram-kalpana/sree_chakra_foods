@@ -6,9 +6,12 @@ import { CartProvider } from "@/contexts/CartContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Sridevi Herbal & Co - Purely Natural Care",
+  title: "Sree Chakra Foods - Purely Natural Care",
   description:
     "Purely Natural Care. Trusted by crores of Indians. Free delivery, Cash on delivery, Lowest prices.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 
   // ❌ DO NOT define `keywords` here
   // This allows product pages to set their own keywords

@@ -79,7 +79,7 @@ export default function SearchDropdown({
                         {product.category}
                       </p>
                       <p className="text-sm font-semibold text-red-900">
-                        ₹{product.price}
+                        £{product.price}
                       </p>
                     </div>
                   </div>

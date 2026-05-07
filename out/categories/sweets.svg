@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="280" viewBox="0 0 420 280">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fff5f7"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9a66a"/>
+      <stop offset="1" stop-color="#b97a3d"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="280" fill="url(#bg)"/>
+  <!-- Basket -->
+  <path d="M95 130h230l-18 110H113z" fill="url(#wood)" stroke="#9a6b36" stroke-width="6" />
+  <path d="M100 140h220" stroke="#8b5e2c" stroke-width="6" opacity="0.7"/>
+  <path d="M105 162h210" stroke="#8b5e2c" stroke-width="6" opacity="0.55"/>
+  <path d="M110 184h200" stroke="#8b5e2c" stroke-width="6" opacity="0.45"/>
+  <!-- Sweets -->
+  <circle cx="170" cy="108" r="22" fill="#ffcc80" stroke="#fb8c00" stroke-width="6"/>
+  <circle cx="210" cy="98" r="20" fill="#ffe0b2" stroke="#fb8c00" stroke-width="6"/>
+  <circle cx="250" cy="110" r="22" fill="#ffccbc" stroke="#e64a19" stroke-width="6"/>
+  <circle cx="285" cy="98" r="18" fill="#f8bbd0" stroke="#c2185b" stroke-width="6"/>
+</svg>
+

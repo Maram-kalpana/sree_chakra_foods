@@ -20,90 +20,32 @@ export default function AboutUsPage() {
             {/* Left Image */}
             <div className="flex justify-center">
               <img
-                src="/banner1.webp"
+                src="/sreelogo.jpeg"
                 alt="Sridevi Herbal & Co"
-                className="w-full max-w-md rounded-xl shadow-lg object-cover"
+                className="w-full max-w-md object-contain"
               />
             </div>
 
             {/* Right Content */}
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                Hi, I am{" "}
-                <span className="font-semibold text-gray-900">
-                  Vemula Sridevi
-                </span>
-                . I have completed a{" "}
-                <span className="font-medium">
-                  2-year Ayurvedic Diploma
-                </span>{" "}
-                along with a{" "}
-                <span className="font-medium">
-                  Naturopathy course
-                </span>
-                . I am an expert in natural skin and hair care solutions.
+                <span className="font-semibold text-gray-900">Sree Chakra Foods</span> is a UK-based
+                Indian grocery store bringing the taste of India to your doorstep.
               </p>
 
               <p>
-                I have trained under professionals with over
-                <span className="font-medium">
-                  {" "}
-                  20+ years of experience
-                </span>{" "}
-                and have been honored with a{" "}
-                <span className="font-medium">
-                  National Award from the Governor
-                </span>
-                . Our products were also awarded as
-                <span className="font-medium">
-                  {" "}
-                  “Best Natural Product” by Blindwink
-                </span>
-                .
+                We stock everyday essentials and speciality items—spices, lentils, rice, snacks,
+                ready-to-cook mixes, pooja items, and more—so you can shop all your favourites in
+                one place.
               </p>
 
               <p>
-                Nature has powerful herbs that can cure most skin and
-                hair problems. Unfortunately, many people today prefer
-                instant, chemical-based solutions. My mission is to
-                bring people back to the goodness of
-                <span className="font-medium">
-                  {" "}
-                  pure, natural, and herbal care
-                </span>
-                .
-              </p>
-
-              <p>
-                I aim to help women look beautiful, feel confident, and
-                be proud of their natural beauty. To date,
-                <span className="font-medium">
-                  {" "}
-                  20,000+ customers
-                </span>{" "}
-                are satisfied with our products, and we continue to grow
-                every day.
-              </p>
-
-              <p>
-                We are a{" "}
-                <span className="font-medium">
-                  women-led enterprise
-                </span>
-                , currently supporting{" "}
-                <span className="font-medium">
-                  100+ women
-                </span>{" "}
-                through selling and promoting our products. Many more
-                women are yet to be empowered.
-              </p>
-
-              <p className="font-medium text-gray-900">
-                Encouraging women. Empowering lives.
+                Our focus is simple: authentic products, good quality, and a smooth shopping
+                experience for customers across the UK.
               </p>
 
               <p className="text-[#8B1D3D] font-semibold">
-                Feel free to contact us — we’d love to help you.
+                Need help choosing products? Contact us—we’re happy to help.
               </p>
             </div>
           </div>

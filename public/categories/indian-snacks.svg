@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="280" viewBox="0 0 420 280">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f7fafc"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9a66a"/>
+      <stop offset="1" stop-color="#b97a3d"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="280" fill="url(#bg)"/>
+  <!-- Basket -->
+  <path d="M95 130h230l-18 110H113z" fill="url(#wood)" stroke="#9a6b36" stroke-width="6" />
+  <path d="M100 140h220" stroke="#8b5e2c" stroke-width="6" opacity="0.7"/>
+  <path d="M105 162h210" stroke="#8b5e2c" stroke-width="6" opacity="0.55"/>
+  <path d="M110 184h200" stroke="#8b5e2c" stroke-width="6" opacity="0.45"/>
+  <path d="M115 206h190" stroke="#8b5e2c" stroke-width="6" opacity="0.35"/>
+  <path d="M120 228h180" stroke="#8b5e2c" stroke-width="6" opacity="0.28"/>
+  <!-- Snack packs -->
+  <rect x="135" y="70" width="62" height="76" rx="10" fill="#2e7d32" stroke="#1b5e20" stroke-width="5"/>
+  <rect x="182" y="60" width="72" height="90" rx="12" fill="#ffd54f" stroke="#f4b400" stroke-width="5"/>
+  <rect x="240" y="74" width="58" height="72" rx="10" fill="#ef5350" stroke="#c62828" stroke-width="5"/>
+  <circle cx="218" cy="104" r="12" fill="#ffffff" opacity="0.9"/>
+  <path d="M205 102h26" stroke="#1b5e20" stroke-width="4" stroke-linecap="round"/>
+</svg>
+
