@@ -69,10 +69,11 @@ export default function Footer() {
             </div>
 
             <div className="mt-4 text-sm text-gray-700 space-y-1">
-              <p>Peerzadiguda, Uppal</p>
-              <p>Hyderabad, Telangana</p>
-              <p className="underline underline-offset-2 break-words">herbalandco@gmail.com</p>
-              <p className="underline underline-offset-2">+91 8919105591</p>
+              <p>50 John Shelton Drive 
+              Coventry CV6 4PE</p>
+              {/* <p>Hyderabad, Telangana</p> */}
+              <p className="underline underline-offset-2 break-words">sreechakrafoods@gmail.com</p>
+              <p className="underline underline-offset-2">00447438 900369</p>
             </div>
 
             <div className="mt-4 flex items-center justify-center gap-3 sm:justify-start">

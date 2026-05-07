@@ -54,8 +54,12 @@ export default function ContactUsPage() {
                 <MapPin className="mt-0.5 h-5 w-5 text-[#0B4B30]" aria-hidden />
                 <div>
                   <p className="font-medium text-gray-900">Address</p>
-                  <p className="text-gray-600">Peerzadiguda, Uppal</p>
-                  <p className="text-gray-600">Hyderabad, Telangana</p>
+                  <p className="text-gray-600">
+                    50 John Shelton Drive
+                    <br />
+                    Coventry CV6 4PE
+                  </p>
+                  {/* <p className="text-gray-600">Hyderabad, Telangana</p> */}
                 </div>
               </div>
 
@@ -63,21 +67,21 @@ export default function ContactUsPage() {
                 <Phone className="mt-0.5 h-5 w-5 text-[#0B4B30]" aria-hidden />
                 <div>
                   <p className="font-medium text-gray-900">Phone</p>
-                  <a className="text-gray-600 hover:text-gray-900" href="tel:+918919105591">
-                    +91 8919105591
+                  <a className="text-gray-600 hover:text-gray-900" href="tel:447438900369">
+                    44 7438 900369
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-3" >
                 <Mail className="mt-0.5 h-5 w-5 text-[#0B4B30]" aria-hidden />
                 <div>
                   <p className="font-medium text-gray-900">Email</p>
                   <a
                     className="text-gray-600 hover:text-gray-900"
-                    href="mailto:herbalandco@gmail.com"
+                    href="mailto:sreechakrafoods@gmail.com"
                   >
-                    herbalandco@gmail.com
+                    sreechakrafoods@gmail.com
                   </a>
                 </div>
               </div>

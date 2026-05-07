@@ -142,7 +142,7 @@ export default function Header() {
         {/* MAIN HEADER ROW */}
         <div className="bg-white text-gray-900">
           <div className="mx-auto max-w-[1320px] px-2 sm:px-2 md:px-8 lg:px-10 py-1 sm:py-1">
-            <div className="grid grid-cols-[auto,1fr,auto] items-center gap-4 sm:gap-6">
+            <div className="grid grid-cols-[auto,minmax(0,1fr),auto] items-center gap-2 sm:gap-6 overflow-x-hidden">
 
               {/* LOGO */}
               <button
@@ -153,20 +153,20 @@ export default function Header() {
                 <img
                   src={logoSrc}
                   alt="Sree Chakra Foods"
-                  className="h-16 w-auto shrink-0 object-contain mix-blend-multiply sm:h-[72px] md:h-20 lg:h-24"
+                  className="h-12 w-auto max-w-[160px] shrink-0 object-contain sm:h-[72px] md:h-20 lg:h-24"
                 />
               </button>
 
               {/* SEARCH */}
               <form
                 onSubmit={handleSearch}
-                className="relative mx-auto w-full max-w-[640px]"
+                className="relative w-full min-w-0"
               >
                 <div className="flex h-11 items-center overflow-hidden rounded-lg border border-gray-300 bg-white shadow-sm sm:h-12">
                   <select
                     value={activeCategory || ""}
                     onChange={(e) => handleCategoryClick(e.target.value || null)}
-                    className="h-full bg-white px-3 text-sm text-gray-800 outline-none min-w-[5.25rem] border-r border-gray-200"
+                    className="h-full bg-white px-2 text-sm text-gray-800 outline-none min-w-[4.25rem] border-r border-gray-200 sm:px-3 sm:min-w-[5.25rem]"
                     aria-label="Category"
                   >
                     <option value="">All</option>
@@ -181,12 +181,12 @@ export default function Header() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search Product type"
-                    className="h-full min-w-0 flex-1 bg-white px-3 text-sm text-gray-900 outline-none placeholder:text-gray-500 sm:px-4 sm:pr-3"
+                    className="h-full min-w-0 flex-1 bg-white px-2 text-sm text-gray-900 outline-none placeholder:text-gray-500 sm:px-4 sm:pr-3"
                   />
 
                   <button
                     type="submit"
-                    className="inline-flex h-full w-11 shrink-0 items-center justify-center text-gray-600 hover:bg-gray-50 sm:w-12"
+                    className="inline-flex h-full w-10 shrink-0 items-center justify-center text-gray-600 hover:bg-gray-50 sm:w-12"
                     aria-label="Search"
                   >
                     <Search className="w-5 h-5" />
@@ -195,7 +195,7 @@ export default function Header() {
               </form>
 
               {/* RIGHT ACTIONS */}
-              <div className="flex flex-shrink-0 items-center justify-end gap-2 sm:gap-3 min-w-[120px] sm:min-w-[200px]">
+              <div className="flex flex-shrink-0 items-center justify-end gap-1.5 sm:gap-3">
                 <button
                   onClick={() => router.push("/contact-us")}
                   className="hidden items-center rounded-md px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-100 lg:inline-flex"
@@ -214,7 +214,7 @@ export default function Header() {
                     className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100"
                     aria-label="Account"
                   >
-                    <User className="w-6 h-6" />
+                    <User className="h-6 w-6" />
                     <span className="sr-only">{isAuthenticated ? "Account" : "Log in"}</span>
                   </button>
 
@@ -252,7 +252,7 @@ export default function Header() {
                   className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100"
                   aria-label="Cart"
                 >
-                  <ShoppingCart className="w-6 h-6" />
+                  <ShoppingCart className="h-6 w-6" />
                   <span className="sr-only">Cart</span>
                   {getTotalItems() > 0 && (
                     <span
@@ -269,10 +269,10 @@ export default function Header() {
         </div>
 
         {/* SECONDARY NAV — white bar / reference spacing */}
-        <nav className="hidden border-t border-gray-200 bg-white lg:block">
+        <nav className="border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-5 md:px-8 lg:px-10">
             <div className="flex items-center justify-between gap-6 py-3">
-              <div className="flex min-w-0 flex-1 items-center gap-x-8 gap-y-2 overflow-x-auto">
+              <div className="flex min-w-0 flex-1 items-center gap-x-6 gap-y-2 overflow-x-auto">
                 {DESKTOP_MENU.map((item) => (
                   <div
                     key={item.key}
@@ -330,7 +330,7 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => router.push("/products")}
-                className="inline-flex shrink-0 items-center rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+                className="inline-flex shrink-0 items-center rounded-lg border px-3 py-2 text-sm font-semibold transition-colors"
                 style={{
                   borderColor: accentGreen,
                   color: "#c8482b",

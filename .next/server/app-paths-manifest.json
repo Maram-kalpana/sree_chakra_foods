@@ -1,8 +1,6 @@
 {
+  "/page": "app/page.js",
   "/products/page": "app/products/page.js",
   "/about-us/page": "app/about-us/page.js",
-  "/product/details/page": "app/product/details/page.js",
-  "/page": "app/page.js",
-  "/account/affiliate/page": "app/account/affiliate/page.js",
-  "/account/orders/page": "app/account/orders/page.js"
+  "/contact-us/page": "app/contact-us/page.js"
 }
