@@ -142,7 +142,122 @@ export default function Header() {
         {/* MAIN HEADER ROW */}
         <div className="bg-white text-gray-900">
           <div className="mx-auto max-w-[1320px] px-2 sm:px-2 md:px-8 lg:px-10 py-1 sm:py-1">
-            <div className="grid grid-cols-[auto,minmax(0,1fr),auto] items-center gap-2 sm:gap-6 overflow-x-hidden">
+            {/* Mobile layout: row1 (logo + icons), row2 (search) */}
+            <div className="md:hidden">
+              <div className="flex items-center justify-between gap-2">
+                {/* LOGO */}
+                <button
+                  onClick={handleLogoClick}
+                  className="flex shrink-0 items-center"
+                  aria-label="Go to homepage"
+                >
+                  <img
+                    src={logoSrc}
+                    alt="Sree Chakra Foods"
+                    className="h-16 w-auto max-w-[280px] shrink-0 object-contain"
+                  />
+                </button>
+
+                {/* RIGHT ACTIONS (mobile) */}
+                <div className="flex shrink-0 items-center justify-end gap-1.5">
+                  {/* PROFILE */}
+                  <div className="relative">
+                    <button
+                      onClick={() =>
+                        isAuthenticated ? setShowProfileMenu(!showProfileMenu) : setShowLogin(true)
+                      }
+                      className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100"
+                      aria-label="Account"
+                    >
+                      <User className="h-6 w-6" />
+                      <span className="sr-only">{isAuthenticated ? "Account" : "Log in"}</span>
+                    </button>
+
+                    {showProfileMenu && (
+                      <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg z-50 overflow-hidden">
+                        <div className="px-4 py-3 border-b border-gray-100">
+                          <p className="text-xs text-gray-500">Signed in as</p>
+                          <p className="font-semibold text-sm text-gray-900">{user?.phone}</p>
+                        </div>
+
+                        <button
+                          onClick={() => {
+                            router.push("/account");
+                            setShowProfileMenu(false);
+                          }}
+                          className="w-full px-4 py-2.5 text-sm text-left hover:bg-gray-50 text-gray-800"
+                        >
+                          <Heart className="inline w-4 h-4 mr-2" />
+                          My Account
+                        </button>
+
+                        <button
+                          onClick={logout}
+                          className="w-full px-4 py-2.5 text-sm text-left text-red-600 hover:bg-red-50"
+                        >
+                          Logout
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* CART */}
+                  <button
+                    onClick={() => setShowCart(true)}
+                    className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100"
+                    aria-label="Cart"
+                  >
+                    <ShoppingCart className="h-6 w-6" />
+                    <span className="sr-only">Cart</span>
+                    {getTotalItems() > 0 && (
+                      <span
+                        className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-white text-[10px] font-semibold"
+                        style={{ color: accentGreen }}
+                      >
+                        {getTotalItems()}
+                      </span>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* SEARCH (mobile full width) */}
+              <form onSubmit={handleSearch} className="mt-2 w-full min-w-0">
+                <div className="flex h-11 items-center overflow-hidden rounded-lg border border-gray-300 bg-white shadow-sm">
+                  <select
+                    value={activeCategory || ""}
+                    onChange={(e) => handleCategoryClick(e.target.value || null)}
+                    className="h-full bg-white px-2 text-sm text-gray-800 outline-none min-w-[4.25rem] border-r border-gray-200"
+                    aria-label="Category"
+                  >
+                    <option value="">All</option>
+                    {topCategoriesForSelect.map((c) => (
+                      <option key={c.id} value={c.slug}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+
+                  <input
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search Product type"
+                    className="h-full min-w-0 flex-1 bg-white px-2 text-sm text-gray-900 outline-none placeholder:text-gray-500"
+                  />
+
+                  <button
+                    type="submit"
+                    className="inline-flex h-full w-10 shrink-0 items-center justify-center text-gray-600 hover:bg-gray-50"
+                    aria-label="Search"
+                  >
+                    <Search className="w-5 h-5" />
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            {/* Desktop/tablet layout */}
+            <div className="hidden md:grid grid-cols-[auto,minmax(0,1fr),auto] items-center gap-2 sm:gap-6 overflow-x-hidden">
 
               {/* LOGO */}
               <button

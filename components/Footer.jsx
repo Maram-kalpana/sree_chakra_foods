@@ -63,17 +63,17 @@ export default function Footer() {
                 <img
                   src="/sreelogo.jpeg"
                   alt="Sree Chakra Foods"
-                  className="h-16 w-auto max-w-[220px] object-contain mix-blend-multiply sm:h-24 sm:max-w-[420px]"
+                  className="h-20 w-auto max-w-[300px] object-contain mix-blend-multiply sm:h-28 sm:max-w-[460px]"
                 />
               </Link>
             </div>
 
             <div className="mt-4 text-sm text-gray-700 space-y-1">
-              <p>50 John Shelton Drive 
+              <p>50 John Shelton Drive, 
               Coventry CV6 4PE</p>
               {/* <p>Hyderabad, Telangana</p> */}
               <p className="underline underline-offset-2 break-words">sreechakrafoods@gmail.com</p>
-              <p className="underline underline-offset-2">00447438 900369</p>
+              <p className="underline underline-offset-2">+044 7438 900369</p>
             </div>
 
             <div className="mt-4 flex items-center justify-center gap-3 sm:justify-start">

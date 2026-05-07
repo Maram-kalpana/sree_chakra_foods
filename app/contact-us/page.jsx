@@ -55,7 +55,7 @@ export default function ContactUsPage() {
                 <div>
                   <p className="font-medium text-gray-900">Address</p>
                   <p className="text-gray-600">
-                    50 John Shelton Drive
+                    50 John Shelton Drive,
                     <br />
                     Coventry CV6 4PE
                   </p>
@@ -67,8 +67,8 @@ export default function ContactUsPage() {
                 <Phone className="mt-0.5 h-5 w-5 text-[#0B4B30]" aria-hidden />
                 <div>
                   <p className="font-medium text-gray-900">Phone</p>
-                  <a className="text-gray-600 hover:text-gray-900" href="tel:447438900369">
-                    44 7438 900369
+                  <a className="text-gray-600 hover:text-gray-900" href="tel:+044 7438900369">
+                    +044 7438 900369
                   </a>
                 </div>
               </div>
